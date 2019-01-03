@@ -34,6 +34,8 @@ Babel will translate JSX to React JavaScript
 
 npm install --save-dev babel-preset-react
 
+Note that any snippet of JSX XML must be valid XML, meaning all XML must be encapsulated in a single root node.
+
 ## React
 
 react: manages internal log
@@ -103,3 +105,9 @@ Importing and exporting in ES6 with destructuring
 // Import default export and non-default export with destructuring of the exported object from a JS file.
 import { default as Portfolio, PortfolioItem } from "./components/portfolio";
 ```
+
+## States
+
+States are values in components that expect to change and expect components to be aware of change and react to the change.
+
+State changes must be made with the setState method of the React component to broadcast the state change to all interested consumers.

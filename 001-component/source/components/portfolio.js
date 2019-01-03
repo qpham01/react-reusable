@@ -2,11 +2,35 @@ import React from "react"; // Use react to work with virtual DOM.  Don't need re
 
 // Components need to start with upper-case to distinguish from being standard HTML tags.
 export class PortfolioItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    // Initial states defined in constructor.
+    // Properties are invariant, but states can change.
+    this.state = { hasImage: true };
+    this.onUpdateImageState = this.onUpdateImageState.bind(this);
+  }
+
+  onUpdateImageState(event) {
+    console.log(this);
+
+    // When change state, need to broadcast the state change to react
+    // with the component's setState method.
+    this.setState({ hasImage: false });
+  }
+
   render() {
+    // Cannot just change states by direct assignment like below:
+    // this.state.hasImage = false;
+    // React wouldn't know when this state is changed.
+
     var path = `img/portfolio/${this.props.img}.png`;
-    console.log(path);
+    // console.log(path);
     return (
-      <div className="col-sm-4 portfolio-item">
+      <div
+        onClick={this.onUpdateImageState}
+        className="col-sm-4 portfolio-item"
+      >
         <a
           href="#portfolioModal1"
           className="portfolio-link"
@@ -17,7 +41,9 @@ export class PortfolioItem extends React.Component {
               <i className="fa fa-search-plus fa-3x" />
             </div>
           </div>
-          <img src={path} className="img-responsive" alt="" />
+          {this.state.hasImage ? (
+            <img src={path} className="img-responsive" alt="" />
+          ) : null}
         </a>
       </div>
     );
