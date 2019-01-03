@@ -12,18 +12,18 @@ export class PortfolioItem extends React.Component {
   }
 
   onUpdateImageState(event) {
-    console.log(this);
-
     // When change state, need to broadcast the state change to react
     // with the component's setState method.
     this.setState({ hasImage: false });
+    setTimeout(() => {
+      this.setState({ hasImage: true });
+    }, 1000);
   }
 
   render() {
     // Cannot just change states by direct assignment like below:
     // this.state.hasImage = false;
     // React wouldn't know when this state is changed.
-
     var path = `img/portfolio/${this.props.img}.png`;
     // console.log(path);
     return (

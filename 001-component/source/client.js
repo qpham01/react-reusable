@@ -8,6 +8,16 @@ var obj = { from: "Ben2" };
 // var { from, to } = obj;
 // console.log(from, to);
 
+var dup = (a, b) => {
+  // (a, b) => is equivalent to function(a * b)
+  return a * b;
+};
+
+var dup2 = (a, b) => a * b; // One-line function don't need curly braces.
+
+console.log(dup(10, 30));
+console.log(dup2(20, 50));
+
 function hey({ from = "Ben", to = "you" }) {
   return `Hello from ${from} , to ${to}`;
 }
