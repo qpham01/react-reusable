@@ -165,3 +165,40 @@ console.log(title.startsWith("Master")); // string also has endsWith() and inclu
 let name = "Ben ** ";
 console.log(name.repeat(10));
 ```
+
+## JSX spread features
+
+The ... operator on an array spreads out its elements
+...[a, b, c] is same as a,b,c
+
+## Static properties in ES6
+
+Here's one way of creating static properties for a class.
+
+```javascript
+// First create class
+class Foo {}
+
+// Then define static variables.
+Foo.version = "1.2";
+console.log(Foo.version);
+```
+
+Second way of creating static properties is through static setters and getters inside of class.
+
+```javascript
+class Bah {
+  // static readonly properties via static getter
+  static get propTypes() {
+    return {};
+  }
+}
+```
+
+## Validating properties in components
+
+User "prop-types" module to validate property type.
+
+```
+
+```
