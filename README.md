@@ -197,8 +197,30 @@ class Bah {
 
 ## Validating properties in components
 
-User "prop-types" module to validate property type.
+static property propTypes is used for property type validation with PropTypes from "prop-types" module.
 
+For example:
+
+```javascript
+class TextFooter extends Component {
+  // Using static property propTypes and PropTypes from "prop-types"
+  // to validate property types.
+  static get propTypes() {
+    return {
+      title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      content: PropTypes.string
+    };
+  }
+}
 ```
 
+or alternately:
+
+```javascript
+class TextFooter extends Component {}
+
+TextFooter.propTypes = {
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  content: PropTypes.string
+};
 ```
