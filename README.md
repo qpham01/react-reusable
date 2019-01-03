@@ -149,3 +149,19 @@ onUpdateImageState(event);
 ```
 
 ## Composition instead of inheritance
+
+## Var, let, and const in ES6
+
+var: has function scope
+let/const: bounded by surrounding {} scope, with let for variable and const for constant
+
+## ES6 strings
+
+strings now have startsWith(), endsWith(), includes(), and repeat() methods.
+
+```javascript
+let title = "Master Ninja";
+console.log(title.startsWith("Master")); // string also has endsWith() and includes()
+let name = "Ben ** ";
+console.log(name.repeat(10));
+```

@@ -1,8 +1,20 @@
 import React from "react"; // Use react to work with virtual DOM.  Don't need react-dom which renders to real DOM.
 import Section from "./section";
 
+export const version = "1.0.1";
+
+{
+  const boo = "Ben Foo";
+  var name2 = "Ben 2";
+  {
+    console.log(boo);
+  }
+}
+// console.log(boo);
+console.log(name2);
+
 // Components need to start with upper-case to distinguish from being standard HTML tags.
-export class PortfolioItem extends React.Component {
+class PortfolioItem extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,7 +37,7 @@ export class PortfolioItem extends React.Component {
     // Cannot just change states by direct assignment like below:
     // this.state.hasImage = false;
     // React wouldn't know when this state is changed.
-    var path = `img/portfolio/${this.props.img}.png`;
+    var path = `img/portfolio/${this.props.data.img}.png`;
     // console.log(path);
     return (
       <div
@@ -33,7 +45,7 @@ export class PortfolioItem extends React.Component {
         className="col-sm-4 portfolio-item"
       >
         <a
-          href="#portfolioModal1"
+          href={this.props.data.link}
           className="portfolio-link"
           data-toggle="modal"
         >
@@ -53,10 +65,14 @@ export class PortfolioItem extends React.Component {
 
 export default class Portfolio extends React.Component {
   render() {
+    let children = [];
+    for (let item of this.props.data) {
+      children.push(<PortfolioItem data={item} key={children.length} />);
+    }
     // don't need 'function' prefix from before ES6
     return (
       <Section id="portfolio" title="Portfolio">
-        {this.props.children}
+        {children}
       </Section>
     );
   }
