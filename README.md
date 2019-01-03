@@ -112,7 +112,7 @@ States are values in components that expect to change and expect components to b
 
 State changes must be made with the setState method of the React component to broadcast the state change to all interested consumers.
 
-## React DOM Manipulation
+## React DOM manipulation
 
 All UI definition and changes are applied to a virtual DOM that React manages, and it determines which virtual DOM changes need to be made to the real DOM, so no rendering logic is needed in the application except for props and states.
 
@@ -126,7 +126,7 @@ React make only the minimum necessary DOM changes to optimize and speed up rende
 
 If a component don't have states, then visually it would never change.
 
-## ES6 Arrow Functions
+## ES6 arrow functions
 
 ```javascript
 var dup = (a, b) => {
@@ -136,8 +136,9 @@ var dup = (a, b) => {
 
 var dup2 = (a, b) => a * b; // One-line function don't need curly braces.
 
-// Even better, arrow functions (also known as lambdas) preserve scope, so...
-
+// Even better, arrow functions (also known as lambdas) preserve scope, so
+// in the function below the same function scope is also in effect inside the
+// arrow function so we can call this.setState() like we do in the outer method.
 onUpdateImageState(event);
 {
   this.setState({ hasImage: false });
@@ -146,3 +147,5 @@ onUpdateImageState(event);
   }, 1000);
 }
 ```
+
+## Composition instead of inheritance

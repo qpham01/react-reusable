@@ -1,4 +1,5 @@
 import React from "react"; // Use react to work with virtual DOM.  Don't need react-dom which renders to real DOM.
+import Section from "./section";
 
 // Components need to start with upper-case to distinguish from being standard HTML tags.
 export class PortfolioItem extends React.Component {
@@ -54,17 +55,9 @@ export default class Portfolio extends React.Component {
   render() {
     // don't need 'function' prefix from before ES6
     return (
-      <section id="portfolio">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12 text-center">
-              <h2>Portfolio</h2>
-              <hr className="star-primary" />
-            </div>
-          </div>
-          <div className="row">{this.props.children}</div>
-        </div>
-      </section>
+      <Section id="portfolio" title="Portfolio">
+        {this.props.children}
+      </Section>
     );
   }
 }
