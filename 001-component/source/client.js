@@ -44,24 +44,18 @@ let footerModel = [
 ];
 
 let navModel = [
-  { link: "#page-top", name: "React Components" },
-  { link: "#portfolio", name: "Portfolio" },
-  { link: "#about", name: "About" },
-  { link: "#contact", name: "Contact" }
+  { link: "#page-top" },
+  { link: "#portfolio" },
+  { link: "#about" },
+  { link: "#contact" }
 ];
 
-let model = {
-  nav: navModel,
-  header: headerModel,
-  portfolio: portfolioModel,
-  footer: footerModel
-};
-
 let modelView = {
-  header: { model: headerModel, view: Header },
-  portfolio: { model: portfolioModel, view: Portfolio },
-  about: { view: About },
-  contact: { view: Contact }
+  header: { model: headerModel, view: Header, label: "React Components" },
+  portfolio: { model: portfolioModel, view: Portfolio, label: "Portfolio" },
+  about: { view: About, label: "About" },
+  contact: { view: Contact, label: "Contact" },
+  footer: { model: footerModel }
 };
 
 // Example of using JSX to override the rendering inside a particular div.

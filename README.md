@@ -224,3 +224,27 @@ TextFooter.propTypes = {
   content: PropTypes.string
 };
 ```
+
+## Parameterizing model-view
+
+```javascript
+let modelView = {
+  header: { model: headerModel, view: Header },
+  portfolio: { model: portfolioModel, view: Portfolio },
+  about: { view: About },
+  contact: { view: Contact }
+};
+
+// Example of using JSX to override the rendering inside a particular div.
+ReactDOM.render(<App data={modelView} />, document.getElementById("page-top"));
+```
+
+## ES6 map API
+
+Maps are hashtables that can have complex values as keys.
+Using this map to create default classes like classes have default properties.
+
+```javascript
+this.map = new Map();
+this.map.set("footer", Footer);
+```

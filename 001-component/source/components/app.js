@@ -10,23 +10,59 @@ import Nav from "./nav";
 export default class App extends Component {
   constructor(props) {
     super(props);
+
+    this.state = { section: location.hash };
+
+    // Maps can have complex values as keys.
+    // Using this map to create default classes like
+    // classes have default properties.
+    this.map = new Map();
+    this.map.set("footer", Footer);
+
     this.onLinkClick = this.onLinkClick.bind(this);
+    window.onhashchange = e => {
+      if (this.map.has(location.hash)) {
+        this.setState({ section: location.hash });
+      }
+    };
   }
 
   onLinkClick(e) {
-    e.preventDefault();
-    console.log("hello");
+    //e.preventDefault();
+    //console.log("hello");
   }
 
   render() {
-    let children = [];
+    let children = [],
+      navModel = [];
     for (let key in this.props.data) {
-      let View = this.props.data[key].view;
+      let View = this.props.data[key].view,
+        { label, model } = this.props.data[key];
+      if (!View && this.map.has(key)) {
+        View = this.map.get(key);
+      }
       if (View) {
-        children.push(<View key={key} data={this.props.data[key].model} />);
+        // children.push(<View key={key} data={model} />);
+        if (label) {
+          this.map.set("#" + key, View);
+          this.map.set(View, model);
+          navModel.push({ link: "#" + key, name: label });
+        }
       }
     }
-    return <div>{children}</div>;
+
+    if (this.map.has(this.state.section)) {
+      const Tag = this.map.get(this.state.section);
+      children = [<Tag key={this.state.section} data={this.map.get(Tag)} />];
+    }
+
+    return (
+      <div>
+        <Nav onClick={this.onLinkClick} data={navModel} />
+        {children}
+        <Footer data={this.props.data.footer.model} />
+      </div>
+    );
   }
 
   /*
