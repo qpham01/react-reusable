@@ -19,7 +19,6 @@ class TextFooter extends Component {
     return {
       title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       content: PropTypes.string
-      // children: PropTypes.element.isRequired
     };
   }
   static get defaultProps() {
@@ -68,7 +67,7 @@ export default class Footer extends Component {
         <div className="footer-above">
           <div className="container">
             <div className="row">
-              <TextFooter />
+              <TextFooter {...this.props.data[0]} />
               <ComplexFooter {...this.props.data[1]} />
               <TextFooter {...this.props.data[2]} />
             </div>
