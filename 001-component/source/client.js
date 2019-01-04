@@ -2,6 +2,15 @@
 import React from "react"; // React is any name you want for local use
 import ReactDOM from "react-dom";
 import App from "./components/app";
+import Portfolio from "./components/portfolio";
+import Header from "./components/header";
+import About from "./components/about";
+import Contact from "./components/contact";
+
+let headerModel = {
+  title: "Master React Components",
+  subtitle: "React - Components - JSX - ES6"
+};
 
 let portfolioModel = [
   { img: "cake", link: "http://02geek.com" },
@@ -41,6 +50,19 @@ let navModel = [
   { link: "#contact", name: "Contact" }
 ];
 
-let model = { nav: navModel, portfolio: portfolioModel, footer: footerModel };
+let model = {
+  nav: navModel,
+  header: headerModel,
+  portfolio: portfolioModel,
+  footer: footerModel
+};
+
+let modelView = {
+  header: { model: headerModel, view: Header },
+  portfolio: { model: portfolioModel, view: Portfolio },
+  about: { view: About },
+  contact: { view: Contact }
+};
+
 // Example of using JSX to override the rendering inside a particular div.
-ReactDOM.render(<App data={model} />, document.getElementById("page-top"));
+ReactDOM.render(<App data={modelView} />, document.getElementById("page-top"));
