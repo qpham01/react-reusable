@@ -19,49 +19,43 @@ class TextFooter extends Component {
     return {
       title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       content: PropTypes.string
+      // children: PropTypes.element.isRequired
     };
   }
-
+  static get defaultProps() {
+    return {
+      title: "Ben you forgot a title",
+      content: "Ben, you still rock!"
+    };
+  }
   render() {
+    return <Element title={this.props.title}>{this.props.content}</Element>;
+  }
+}
+
+class SocialLink extends Component {
+  render() {
+    let className = "fa fa-fw fa-" + this.props.name;
     return (
-      <Element title={this.props.title}>
-        <p>{this.props.content}</p>
-      </Element>
+      <li>
+        <a href={this.props.link} className="btn-social btn-outline">
+          <i className={className} />
+        </a>
+      </li>
     );
   }
 }
 
 class ComplexFooter extends Component {
   render() {
+    let children = [];
+    for (let sl of this.props.content) {
+      children.push(<SocialLink key={sl.name} {...sl} />);
+    }
+
     return (
       <Element title={this.props.title}>
-        <ul className="list-inline">
-          <li>
-            <a href="#" className="btn-social btn-outline">
-              <i className="fa fa-fw fa-facebook" />
-            </a>
-          </li>
-          <li>
-            <a href="#" className="btn-social btn-outline">
-              <i className="fa fa-fw fa-google-plus" />
-            </a>
-          </li>
-          <li>
-            <a href="#" className="btn-social btn-outline">
-              <i className="fa fa-fw fa-twitter" />
-            </a>
-          </li>
-          <li>
-            <a href="#" className="btn-social btn-outline">
-              <i className="fa fa-fw fa-linkedin" />
-            </a>
-          </li>
-          <li>
-            <a href="#" className="btn-social btn-outline">
-              <i className="fa fa-fw fa-dribbble" />
-            </a>
-          </li>
-        </ul>
+        <ul className="list-inline">{children}</ul>
       </Element>
     );
   }
@@ -74,8 +68,8 @@ export default class Footer extends Component {
         <div className="footer-above">
           <div className="container">
             <div className="row">
-              <TextFooter {...this.props.data[0]} />
-              <TextFooter {...this.props.data[1]} />
+              <TextFooter />
+              <ComplexFooter {...this.props.data[1]} />
               <TextFooter {...this.props.data[2]} />
             </div>
           </div>

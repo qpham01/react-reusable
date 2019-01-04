@@ -87,11 +87,11 @@ let footerModel = [
   {
     title: "Around the Web",
     content: [
-      { url: "#", key: "facebook" },
-      { url: "#", key: "facebook" },
-      { url: "#", key: "facebook" },
-      { url: "#", key: "facebook" },
-      { url: "#", key: "facebook" }
+      { link: "#", name: "facebook" },
+      { link: "#", name: "twitter" },
+      { link: "#", name: "linkedin" },
+      { link: "#", name: "youtube" },
+      { link: "#", name: "instagram" }
     ]
   },
   {
